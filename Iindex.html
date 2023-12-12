@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+</head>
+<body>
+    <table >
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </thead>
+        <tbody id="Tabela">
+                      <!-- Inserindo os registros dinamicamente pelo javascript -->
+        </tbody>
+    </table>
+<button type="button" id="btn">Carregar dados</button>
+<script>
+//Chamando o botão com ID btn
+let btn = document.getElementById('btn');
+//array de array que contém os dados
+array_dados = [ 
+       [1,'Fabricio','(98) 25410 - 7815'],
+       [2,'Joao','(94) 25410 - 7815'],
+       [3,'Beto','(98) 25410 - 1489'],
+       [4,'Carlos','(98) 25410 - 7415'],
+       [5,'Ana','(98) 8715 - 7815'],
+       [6,'Jussara','(98) 25410 - 7815']
+    ]
+//É adicionado um escutador de evento ao botão btn
+btn.addEventListener('click',()=>{
+//Chama a tabela pelo seu ID
+let Tabela = document.getElementById('Tabela');
+//Limpa os dados atuais da tabela
+Tabela.innerText = '';
+//percorre o array,criando as linhas e as celulas
+array_dados.forEach(rowData => {
+//Inserindo uma linha (tr)
+    const tr = document.createElement("tr");
+    //Percorrendo a linha 
+    rowData.forEach(cellData => {
+       // inserindo as celulas (td) nas linhas
+        const td = document.createElement("td");
+         //inserindo o conteudo as celulas
+        td.innerText = cellData;
+        //Uma linha recebe uma celula,tag pai recebe uma tag filha
+        tr.appendChild(td);
+    });
+    //Tag pai (Tabela) recebe as linhas (trs)
+    Tabela.appendChild(tr);
+})
+})
+</script>
+</body>
+</html>
